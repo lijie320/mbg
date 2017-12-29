@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 生成代码需要的步骤
+        1.链接数据库（驱动包 四要素）
+    
+     -->
+
+  <classPathEntry location="D:\mysql-connector-java-5.1.26-bin.jar" />
+<!-- 生成代码的规则
+    targetRuntime 开发环境mybatis的版本
+ -->
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/food"
+        userId="root"
+        password="123456">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+    <!-- 实体类 带有get set方法的 -->
+    <javaModelGenerator targetPackage="cn.et.entity" targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+      <!--sql语句相关的xml或者注解的生成包路径  -->
+    <sqlMapGenerator targetPackage="cn.et.resource"  targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+    <!-- 生成接口所在的位置 -->
+    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="cn.et.dao"  targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <table tableName="emp">
+
+    </table>
+
+  </context>
+</generatorConfiguration>
